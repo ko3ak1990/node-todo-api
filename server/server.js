@@ -24,7 +24,21 @@ app.post('/todos', (req, res) => {
 
     console.log(req.body);
 
+});
 
+app.get('/todos', (req, res) => {
+    Todo.find().then((todos) => {
+        res.send({
+            msg: "succesfully found objects",
+            todoArr: todos
+        }).status(200);
+    }, (e) => {
+        console.log(e);
+        res.send({
+            msg: "FAILED",
+            status: 400
+        }).status(400);
+    });
 });
 
 
@@ -32,3 +46,4 @@ app.listen(3000, () => {
     console.log('Started on port 3000');
 });
 
+module.exports = {app};
