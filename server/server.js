@@ -49,7 +49,7 @@ app.get('/todos/:id', (req, res) => {
     });
 });
 
-app.listen(port, () => {
+app.listen(process.env.PORT, () => {
     console.log(`Started up at port ${port}`);
 });
 
