@@ -66,7 +66,7 @@ app.get('/todos/:id', authenticate, (req, res) => {
     });
 });
 
-app.delete('/todos/:id',authenticate, (req, res) => {
+app.delete('/todos/:id', authenticate, (req, res) => {
     var id = req.params.id;
 
     if (!ObjectID.isValid(id)) {
@@ -87,7 +87,7 @@ app.delete('/todos/:id',authenticate, (req, res) => {
     });
 });
 
-app.patch('/todos/:id',authenticate, (req, res) => {
+app.patch('/todos/:id', authenticate, (req, res) => {
     var id = req.params.id;
     var body = _.pick(req.body, ['text', 'completed']);
 
@@ -139,7 +139,7 @@ app.post('/users/login', (req, res) => {
 
     User.findByCredentials(body.email, body.password).then((user) => {
         return user.generateAuthToken().then((token) => {
-            user.token
+            user.authToken = token;
             res.header('x-auth', token).send(user);
 
         });
