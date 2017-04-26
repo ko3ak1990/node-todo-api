@@ -14,7 +14,7 @@ var app = express();
 const port = process.env.PORT;
 
 app.use(bodyParser.json());
-app.use(function (req, res, next) {
+app.use(function (req, response, next) {
 
     response.setHeader("Access-Control-Allow-Origin", "*");
     response.setHeader("Access-Control-Allow-Credentials", "true");
