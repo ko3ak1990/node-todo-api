@@ -23,7 +23,7 @@ app.use(function (req, response, next) {
 
     next();
 });
-
+app.disable('etag');
 app.post('/todos', authenticate, (req, res) => {
     var todo = new Todo({
         text: req.body.text,
